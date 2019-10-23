@@ -77,6 +77,7 @@ func MergeFile(rootPath string, outFileName string) {
 				buffer := make([]byte, 1024)
 				readCount, readErr := bReader.Read(buffer)
 				if readErr == io.EOF {
+					bWriter.Write([]byte("\n"))
 					break
 				} else {
 					bWriter.Write(buffer[:readCount])
