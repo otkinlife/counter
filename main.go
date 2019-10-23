@@ -5,7 +5,6 @@ import (
 	"./vender"
 	"flag"
 	"fmt"
-	"time"
 )
 
 var path string
@@ -19,17 +18,13 @@ func init() {
 }
 
 func main() {
-	fmt.Println("计算开始(Ctrl C 退出)")
 	_, err := vender.Exists(path)
 	if err != nil {
 		panic("不存在该文件或目录")
 	}
 	if vender.IsDir(path) {
-		//todo:
+		counter.DoDir(path)
 	} else {
 		counter.DoSingle(path)
-	}
-	for ; ; {
-		time.Sleep(1)
 	}
 }

@@ -3,6 +3,7 @@ package counter
 import (
 	"../vender"
 	"fmt"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
@@ -30,6 +31,13 @@ func DoSingle(path string) {
 		sum += cost;
 	}
 	output()
+}
+
+func DoDir(path string) {
+	outFileName := "./.merge_result.txt"
+	vender.MergeFile(path, outFileName)
+	DoSingle(outFileName)
+	os.Remove(outFileName)
 }
 
 func matchTag(name string) string {
